@@ -118,7 +118,46 @@ Populate from:
 - Deal-breakers from Step 1.4
 - Leave Recently Applied empty (will populate after first /job-search run)
 
-Say: "Preferences file created. Moving on to API keys — I'll take you through them one at a time."
+Say: "Preferences file created. One more file to generate, then we move to API keys."
+
+### Step 2.3 — Generate context/personal-questions.md
+
+Write `context/personal-questions.md`. This file contains first-person answers to the classic personal/screening interview questions. The Interview Prepper loads it for every screening round — without it, that round will fail.
+
+Use everything collected in Phase 1 to populate the answers. Keep each answer grounded in real experience from the profile — nothing invented.
+
+Structure the file with these four parts:
+
+**Part 1 — Identity & Motivation**
+- "Tell me about yourself" — 3-4 sentence career narrative: what connects the roles, what the pattern of impact is, what they're moving toward
+- "Why should we hire you?" — one proof point that maps directly to the kind of role they're targeting
+- "Why are you leaving your current role?" — honest, forward-looking, company-agnostic
+- "Where do you see yourself in 5 years?" — directional but concrete; scope they want, not just a title
+
+**Part 2 — Strengths & Work Style**
+- "What's your greatest strength?" — one thing with a specific proof point from their work history
+- "What's your greatest weakness?" — a real one, not a thinly disguised strength; must include what they're actively doing about it
+- "Describe how you work best" — environment, collaboration style, how they handle ambiguity
+
+**Part 3 — Logistics**
+- "Are you open to relocation?" — use `personal.relocation_targets` from the profile
+- "What are your salary expectations?" — soft deflect: "Open to market rate — happy to discuss once I know more about the scope"
+- "What's your notice period / when can you start?"
+- "Do you have the right to work in [country]?" — use `personal.work_authorization` and `personal.visa_sponsorship_required`
+
+Add a header at the top of the file:
+```
+# Personal Questions Library
+First-person answers to classic personal/screening interview questions.
+Company-agnostic — refine these over time as real interviews come in.
+Source: context/profile.md and context/preferences.md
+```
+
+After writing the file, say:
+
+> "Done — I've written your personal questions file with starter answers based on your profile. These will get sharper as you use them in real interviews.
+>
+> Moving on to API keys now."
 
 ---
 
@@ -395,5 +434,8 @@ When all phases are done, say:
 >
 > **Normal rhythm:**
 > Run `/job-search` → review in Notion → check Approved? → run `/filling-in` → apply manually → run `/gmail-sync`
+>
+> **One optional extra — Gmail sync:**
+> `/gmail-sync` needs the Gmail MCP connected to work. In Cowork: go to Settings → Plugins and install the Gmail plugin. In Claude Code: add the Gmail MCP server to your `.claude/settings.json`. Once connected, `/gmail-sync` will pull interview invites and rejections directly into your Notion tracker.
 >
 > Ready to go. Run `/job-search` whenever you're ready for your first full scan."

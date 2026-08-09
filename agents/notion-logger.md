@@ -43,6 +43,19 @@ Create a new row in the Job Application Tracker database and populate the corres
 
 ## Steps
 
+### Step 0 — Resolve Data Source ID
+
+Before creating any rows, confirm the Data Source ID is real (not a placeholder).
+
+Read `notion.data_source_id` from `claude-job-profile.json`. If it is missing, empty, or still reads `YOUR_NOTION_DATA_SOURCE_ID`:
+
+1. Call `notion-fetch` with the database_id (from `notion.database_id` in the profile).
+2. In the response, find the `<data-source url="collection://...">` tag. The full `collection://...` string is the Data Source ID.
+3. Write it back to `claude-job-profile.json` under `notion.data_source_id`.
+4. Use this value as `{{NOTION_DATA_SOURCE_ID}}` for all calls in this session.
+
+If the fetch fails or returns no data-source tag, alert the user: the Notion integration is not connected to the database. Refer them to setup Phase 4.3.
+
 ### Step 1 — Create database row
 
 **Critical: the `parent` argument is required on the create-pages call itself.** If `parent` is omitted, Notion silently creates a private workspace-level page instead of a database row — the call still succeeds and returns a page ID, but Role Title and Approved? are the only properties that actually persist; Company, Location, Status, Match Score, Job URL, Keywords, Date Found, Archetypes, and Notes all come back empty even though you passed them. There is no error to catch this — it fails silently. Always call `mcp__eaaf596d-8c3c-4695-93b6-6fb9915a0cdf__notion-create-pages` with:

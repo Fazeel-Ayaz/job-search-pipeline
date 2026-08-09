@@ -1,0 +1,69 @@
+#!/bin/bash
+# Pre-commit hook: block personal data from being committed to git
+#
+# Scans staged additions only — never reads or modifies local gitignored files
+# (CLAUDE.md, context/profile.md, claude-job-profile.json are safe on disk).
+#
+# Activated via: git config core.hooksPath .githooks
+# setup.sh runs this automatically for new users.
+
+# Extract lines being added in this commit (strip diff + prefix)
+ADDED=$(git diff --cached --unified=0 | grep '^+' | grep -v '^+++' | sed 's/^+//')
+
+if [ -z "$ADDED" ]; then
+    exit 0
+fi
+
+BLOCKED=0
+
+# ── 1. Notion integration tokens ─────────────────────────────────────────────
+# Real tokens: secret_ followed by 20+ alphanumeric chars
+# Template placeholders (secret_YOUR_..., secret_abc123...) are excluded:
+#   - secret_YOUR_ is excluded by the negative lookahead
+#   - secret_abc123... only has 6 alphanum chars — below the 20-char threshold
+if echo "$ADDED" | grep -qE 'secret_(?!YOUR)[A-Za-z0-9_-]{20,}' 2>/dev/null || \
+   echo "$ADDED" | grep -P 'secret_(?!YOUR)[A-Za-z0-9_-]{20,}' > /dev/null 2>&1; then
+    echo "  ✗ Notion integration token (secret_...) detected in staged changes."
+    BLOCKED=1
+fi
+
+# ── 2. Phone numbers with country codes ──────────────────────────────────────
+# Matches international phone formats: country code + area code + number
+if echo "$ADDED" | grep -qE '\+[0-9]{2,3}[-. ]?[0-9]{3}[-. ]?[0-9]{4,}'; then
+    echo "  ✗ Phone number with country code detected in staged changes."
+    BLOCKED=1
+fi
+
+# ── 3. Real email addresses ───────────────────────────────────────────────────
+# Skip lines that are clearly template placeholders or documentation examples
+EMAIL_LINES=$(echo "$ADDED" | \
+    grep -E '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}' | \
+    grep -vE 'YOUR_EMAIL|@example\.|example@|placeholder|secret_abc')
+if [ -n "$EMAIL_LINES" ]; then
+    echo "  ✗ Email address detected in staged changes:"
+    echo "$EMAIL_LINES" | sed 's/^/    /' | head -5
+    BLOCKED=1
+fi
+
+# ── 4. Hardcoded personal name in file paths ─────────────────────────────────
+# Catches resume PDF filename patterns like Firstname-Lastname-Company.pdf
+# being hardcoded into tracked scripts (the PDFs themselves are gitignored)
+NAME_LINES=$(echo "$ADDED" | grep -E '[A-Z][a-z]+-[A-Z][a-z]+-[A-Z][a-z]+.*\.pdf' | \
+    grep -vE 'Your-Name|FIRSTNAME|Firstname|Lastname|Example|template')
+if [ -n "$NAME_LINES" ]; then
+    echo "  ✗ Personal name in PDF filename detected in staged changes:"
+    echo "$NAME_LINES" | sed 's/^/    /' | head -5
+    BLOCKED=1
+fi
+
+# ── Result ───────────────────────────────────────────────────────────────────
+if [ "$BLOCKED" -eq 1 ]; then
+    echo ""
+    echo "PRE-COMMIT BLOCKED: remove personal data before committing."
+    echo "Your gitignored local files (CLAUDE.md, profile.md, claude-job-profile.json) are untouched."
+    echo ""
+    exit 1
+fi
+
+echo "✓ pre-commit: no personal data detected in staged changes."
+exit 0

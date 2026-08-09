@@ -54,7 +54,12 @@ echo "✓ scripts/ folder ready"
 mkdir -p resumes
 echo "✓ resumes/ folder ready (gitignored — temp PDFs go here)"
 
-# 5. Check Claude Code is installed
+# 5. Activate pre-commit hook (blocks personal data from git commits)
+git config core.hooksPath .githooks
+chmod +x .githooks/pre-commit 2>/dev/null || true
+echo "✓ Pre-commit hook activated — personal data will be blocked from commits"
+
+# 6. Check Claude Code is installed
 if command -v claude &> /dev/null; then
   echo "✓ Claude Code is installed ($(claude --version))"
 else
