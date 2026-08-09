@@ -1,0 +1,35 @@
+# Personal config — never commit these
+claude-job-profile.json
+CLAUDE.md
+
+# Private context modules — fill these in from the .template.md versions
+context/profile.md
+context/preferences.md
+context/personal-questions.md
+
+# Personal data exports
+LinkedIn Data Export*/
+*.xlsx
+__pycache__/
+
+# Resumes and documents with personal info
+*.pdf
+*.docx
+*.doc
+resumes/
+
+# macOS
+.DS_Store
+
+# Scan history (dedup state — regenerated on each run)
+scanned_history.json
+
+# Working files — intermediate outputs, never commit
+working/
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.temp

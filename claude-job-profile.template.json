@@ -1,0 +1,133 @@
+{
+  "personal": {
+    "name": "YOUR_FULL_NAME",
+    "email": "YOUR_EMAIL@gmail.com",
+    "phone": "YOUR_PHONE",
+    "location": "YOUR_CITY, YOUR_COUNTRY",
+    "linkedin": "https://linkedin.com/in/YOUR_HANDLE/",
+    "github": "",
+    "portfolio": "",
+    "willing_to_relocate": true,
+    "relocation_targets": ["TARGET_COUNTRY_1", "TARGET_COUNTRY_2"],
+    "visa_sponsorship_required": true,
+    "work_authorization": "YOUR_WORK_AUTH_STATUS"
+  },
+  "summary": "2-3 sentence professional summary using lifecycle/AARRR language. Example: 'Lifecycle and growth marketing specialist with X years managing full-funnel user journeys across acquisition, activation, retention, and revenue for consumer tech businesses.'",
+  "experience": [
+    {
+      "company": "MOST_RECENT_COMPANY",
+      "title": "YOUR_TITLE",
+      "start_date": "YYYY-MM",
+      "end_date": "Present",
+      "location": "CITY, COUNTRY",
+      "highlights": [
+        "Owned lifecycle experimentation strategy — drove X% metric uplift through cohort-targeted activation/retention campaigns",
+        "Built churn prediction model to identify at-risk cohorts — X% churn reduction",
+        "Ran A/B incentive experiments with holdout groups — improved cost per incremental metric by X%",
+        "Multi-channel lifecycle campaigns via Braze (Email, Push, In-App, SMS)"
+      ]
+    },
+    {
+      "company": "PREVIOUS_COMPANY",
+      "title": "YOUR_TITLE",
+      "start_date": "YYYY-MM",
+      "end_date": "YYYY-MM",
+      "location": "CITY, COUNTRY",
+      "highlights": [
+        "Re-engineered user activation funnel — revamped onboarding (+X% first-order conversion)",
+        "Drove X% growth in engagement KPIs through lifecycle experimentation",
+        "Instrumented event taxonomy: X+ events, Y+ user properties — enabling cohort analysis"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "YOUR_UNIVERSITY",
+      "degree": "YOUR_DEGREE",
+      "cgpa": "X.XX",
+      "honors": "ANY_HONORS",
+      "accreditation": "ACCREDITATION_IF_ANY"
+    }
+  ],
+  "skills": {
+    "lifecycle_crm": ["Lifecycle Experimentation", "Cohort Analysis", "User Segmentation", "Incentive Design", "Churn Prediction", "Activation & Onboarding", "Retention & Reactivation"],
+    "marketing_strategy": ["GTM Planning", "Lifecycle Strategy", "Playbook Development", "AARRR Framework", "Budgeting & Forecasting"],
+    "campaign_optimization": ["A/B Testing", "Incrementality Testing", "Holdout Groups", "Incentive Planning"],
+    "automation_ai": ["Claude Code", "n8n"],
+    "data": ["SQL", "BigQuery", "Looker", "Google Sheets", "Mixpanel", "Amplitude"],
+    "crm_tools": ["Braze", "MoEngage"],
+    "channels": ["Email", "Push Notifications", "In-App Messaging", "SMS"],
+    "performance_marketing": ["Google Ads", "Meta Ads"],
+    "seo": ["Google Search Console", "SEMrush"]
+  },
+  "target_roles": [
+    "Lifecycle Marketing Manager",
+    "CRM Manager / CRM Marketing Manager",
+    "Retention Marketing Manager",
+    "Subscription Growth Manager",
+    "Growth Marketing Manager (Lifecycle/CRM-focused)",
+    "Product Marketing Manager (Consumer Tech / Marketplace)",
+    "Marketing Experimentation Manager"
+  ],
+  "role_filter_criteria": {
+    "note": "Title alone is insufficient — always read the full JD before logging a role",
+    "include_jd_signals": [
+      "lifecycle", "activation", "retention", "reactivation", "churn",
+      "CRM", "owned channels", "email/push/in-app/SMS",
+      "A/B testing", "experimentation", "incrementality",
+      "cohort analysis", "user segmentation", "LTV",
+      "incentive management", "promotion strategy",
+      "AARRR", "subscription growth", "freemium to premium",
+      "funnel optimisation", "GTM + user adoption"
+    ],
+    "exclude_jd_signals": [
+      "paid media only", "performance marketing only",
+      "Google Ads / Meta Ads as primary responsibility",
+      "media buying", "OOH",
+      "sales", "business development", "account management",
+      "B2B growth without consumer lifecycle component"
+    ],
+    "ambiguous_titles_requiring_jd_check": [
+      "Growth Marketing Manager",
+      "Growth Manager",
+      "Marketing Manager",
+      "Senior Marketing Manager"
+    ]
+  },
+  "excluded_roles": [
+    "Sales",
+    "Business Development",
+    "Account Management"
+  ],
+  "excluded_companies_by_country": [],
+  "target_companies": [
+    "Company A",
+    "Company B",
+    "Company C"
+  ],
+  "recently_applied": [
+    {
+      "note": "Populate this list to prevent duplicate applications",
+      "format": { "role": "Role Title", "company": "Company Name", "location": "City", "applied": "X weeks ago" }
+    }
+  ],
+  "notion": {
+    "_note": "Get IDs from your Notion database URL. The 32-char string after notion.so/ is the page/database ID. Remove any hyphens.",
+    "database_id": "YOUR_NOTION_DATABASE_ID",
+    "parent_page_id": "YOUR_NOTION_PARENT_PAGE_ID",
+    "data_source_id": "YOUR_NOTION_DATA_SOURCE_ID",
+    "tracker_database_url": "https://www.notion.so/YOUR_DATABASE_ID",
+    "job_search_page_url": "https://www.notion.so/YOUR_PAGE_ID"
+  },
+  "gmail": {
+    "address": "YOUR_EMAIL@gmail.com"
+  },
+  "apis": {
+    "_note": "Get Adzuna keys at https://developer.adzuna.com — free tier, 250 req/day. Get Reed key at https://www.reed.co.uk/developers — free. Get RapidAPI key at https://rapidapi.com (covers JSearch + Indeed Scraper) — subscribe to both APIs on free tier. Get Notion token at https://notion.so/profile/integrations — create an Internal Integration, then share your database with it.",
+    "adzuna_app_id": "YOUR_ADZUNA_APP_ID",
+    "adzuna_app_key": "YOUR_ADZUNA_APP_KEY",
+    "reed_api_key": "YOUR_REED_API_KEY",
+    "rapidapi_key": "YOUR_RAPIDAPI_KEY",
+    "notion_token": "secret_YOUR_NOTION_INTEGRATION_TOKEN"
+  }
+}

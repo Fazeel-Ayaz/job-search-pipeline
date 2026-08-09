@@ -1,0 +1,170 @@
+# Job Search Pipeline
+
+This is the core context file. It contains only what every agent needs on every run.
+Detailed content lives in scoped context modules — each agent declares which ones it loads.
+
+---
+
+## System Config
+
+> Read all personal IDs from `claude-job-profile.json` in the project root.
+> Never hardcode IDs here — copy this template to `CLAUDE.md` and leave the config block as-is.
+
+- **Notion Database ID:** read from `notion.database_id` in `claude-job-profile.json`
+- **Notion Parent Page ID:** read from `notion.parent_page_id` in `claude-job-profile.json`
+- **Notion Data Source ID:** read from `notion.data_source_id` in `claude-job-profile.json`
+- **Job Search Directory:** the folder containing this file (project root)
+
+---
+
+## Context Modules
+
+Load these files per agent step — do not load all of them for every step.
+
+| Module | Path | Load When |
+|--------|------|-----------|
+| Profile | `context/profile.md` | Writing resumes, cover letters, interview prep — any step that uses the candidate's experience or metrics |
+| Preferences | `context/preferences.md` | Discovering, filtering, or scoring roles — any step that decides whether a role qualifies |
+| Resume Format | `context/resume-format.md` | Resume Tailor only — XYZ bullets, format rules, PDF spec, generation sub-workflow |
+| Infrastructure | `context/infrastructure.md` | Notion Logger, Gmail Syncer — any step that reads/writes Notion or manages files |
+
+---
+
+## Quick Start
+
+1. **Find new roles:** `/job-search` — scans 15 sources, scores, tailors, logs to Notion
+2. **Preview without tailoring:** `/job-scope` — discovery and scoring only, no resume generation
+3. **Fill in approved rows:** `/filling-in` — generates resume + cover letter for Notion rows the user has approved
+4. **Check email responses:** `/gmail-sync` — syncs inbox to Notion statuses
+5. **Prep for an interview:** `/interview-prep [notion-url]` — structured prep from Notion page
+6. **Resume a long run:** Save working files to `working/` and restart with context from there
+
+---
+
+## Skills
+
+Always-on rules. Apply automatically when the trigger condition matches — do not wait to be asked.
+
+| Skill | Path | Apply When |
+|-------|------|------------|
+| JD Filter | `skills/jd-filter.md` | Evaluating whether any role qualifies for the pipeline |
+| ATS Scanner | `skills/ats-scanner.md` | Every job URL — immediately after JD fetch, before scoring |
+| Legitimacy Check | `skills/legitimacy-check.md` | Every new posting — after ATS scan, before scoring |
+| Score Rubric | `skills/score-rubric.md` | Scoring any role against the 100-point rubric |
+| Archetypes | `skills/archetypes.md` | Every resume — Step 0, before writing a single bullet |
+| Comp Research | `skills/comp-research.md` | Every role scoring 60+ — before resume generation |
+| Resume Rules | `skills/resume-rules.md` | Writing or reviewing any resume — always active |
+| Seniority Framing | `skills/seniority-framing.md` | Writing any resume or cover letter — always active |
+| Cover Letter | `skills/cover-letter.md` | Writing any cover letter — always active |
+| Link Verification | `skills/link-verification.md` | Encountering any job URL — before logging, scoring, or applying |
+| LinkedIn Connections | `skills/linkedin-connections.md` | Every job scoring 45+ — check 1st-degree connections, generate outreach message |
+| STAR Library | `skills/star-library.md` | Every interview prep session — load before any behavioural answers |
+
+---
+
+## Agents
+
+Markdown prompt templates. Read the agent file, fill `{{VARIABLES}}`, execute step by step.
+See `agents/INDEX.md` for the full variable reference.
+
+| Agent | Path | Invoke When |
+|-------|------|-------------|
+| Job Discovery | `agents/job-discovery.md` | `/job-search` — scan all APIs, pre-filter, return candidate list |
+| JD Reader | `agents/jd-reader.md` | Fetching and parsing a full JD from a URL |
+| Role Scorer | `agents/role-scorer.md` | After discovery — score each candidate, keep top 15 at 60+ |
+| Resume Tailor | `agents/resume-tailor.md` | For each qualifying role — generate 1-page PDF |
+| Cover Letter Writer | `agents/cover-letter-writer.md` | After Resume Tailor — write tailored cover letter |
+| Notion Logger | `agents/notion-logger.md` | After Resume + Cover Letter — log to tracker, Status = To Apply |
+| Gmail Syncer | `agents/gmail-syncer.md` | `/gmail-sync` — parse inbox, update Notion statuses |
+| Interview Prepper | `agents/interview-prepper.md` | `/interview-prep [url]` — generate structured prep sheet |
+| LinkedIn Enricher | `agents/linkedin-enricher.md` | Run once on archive download — index connections, flag recruiter messages |
+
+---
+
+## Default Workflow (`/job-search`)
+
+1. **Discover** — Job Discovery agent scans 15 sources: Adzuna (12 countries), Reed UK, aijobs.net, The Muse, Remotive, Jobicy, Arbeitnow, Greenhouse (direct), Lever (direct), SmartRecruiters (direct), JSearch/RapidAPI, Indeed Scraper/RapidAPI, Serper/Google Jobs, Landing.jobs (EU relocation), Relocate.me (visa roles)
+2. **Read JDs** — JD Reader fetches full text; apply JD Filter skill
+3. **ATS Scan + Legitimacy** — For each JD: ATS Scanner (is posting live?) then Legitimacy Check (is it real?). Drop 404s and Skip verdicts. Flag Caution in Notes.
+4. **Score** — Role Scorer scores each candidate (100-pt rubric), keeps top 15 at 60+
+5. **Archetype + Comp** — For each 60+ role: Archetypes skill then Comp Research skill. Feed into resume framing.
+6. **Tailor** — Resume Tailor generates 1-page PDF
+7. **Cover letter** — Cover Letter Writer writes tailored letter
+8. **Log** — Notion Logger creates tracker row (Status = "To Apply", Approved? = false), populates page body with full JD, resume, cover letter, comp range, archetypes
+9. **Await approval** — Stop. User reviews in Notion, sets Approved? = true for roles to pursue
+10. **Apply manually** — User opens the job URL, copies resume + cover letter from the Notion page, submits the application, then updates Status = "Applied" and Date Applied in Notion
+
+---
+
+## Command → Agent Map
+
+| Command | Agents + Skills (in order) |
+|---------|--------------------------|
+| `/job-search` | Job Discovery → [ATS Scanner + Legitimacy Check] → Role Scorer → [Archetypes + Comp Research] → Resume Tailor → Cover Letter Writer → Notion Logger |
+| `/filling-in` | query_approved.py → [LinkedIn Connections] → Resume Tailor → Cover Letter Writer → Notion Logger |
+| `/gmail-sync` | Gmail Syncer |
+| `/interview-prep [url]` | Interview Prepper |
+
+Skills in `[brackets]` run inline — not separate agents, but must be applied at that step before proceeding.
+
+---
+
+## Rules (Non-negotiable)
+
+1. **Never generate a resume without Approved? = true.** User must approve in Notion. Applications are always submitted manually by the user.
+2. **Never generate a resume for:** Sales, Business Development, Account Management roles, or companies excluded in `excluded_companies_by_country` in `claude-job-profile.json`.
+3. **Never fabricate metrics.** All numbers come from `context/profile.md` Resume Metrics Reference only.
+4. **No em dashes** anywhere in resumes or cover letters. Use `:`, `;`, or commas.
+5. **Always use the correct parent company name** — verify the owning group before writing any company reference in a resume.
+6. **Resumes must be exactly 1 page.** Verify with pypdf. Do not submit if > 1 page.
+7. **Dead links → Link 404.** If a job URL returns 404, mark Status = "Link 404" in Notion immediately.
+8. **Score first, tailor second.** Never generate a resume for a role scoring below 60.
+9. **Title alone is never sufficient.** Always read the full JD before including or excluding.
+10. **All resume/cover letter content lives in Notion.** No Google Drive. PDFs are temp — delete after submission.
+11. **ATS-safe format only.** Single-column, no tables/graphics/text boxes, standard headings.
+12. **ATS scan before scoring.** If ATS confirms closed: mark Link 404, stop. Never score a dead posting.
+13. **Legitimacy check before scoring.** Skip verdict: drop. Caution verdict: proceed, add flag to Notion Notes.
+14. **Archetype detection before every resume.** State primary and secondary archetype before writing a single bullet.
+15. **Comp research before every resume.** Log market range and negotiation anchor to Notion Notes.
+16. **Seniority framing always on.** Apply `skills/seniority-framing.md` for all resume bullets and cover letter copy.
+17. **Log archetypes to Notion.** Every Notion row with a resume must have the Archetypes field populated.
+18. **Ghost jobs are wasted effort.** Posting 90+ days old with no ATS confirmation = ghost. Do not generate resume without user override.
+19. **Don't invent tools or deliverables not in the base resume.** Every bullet must describe an accomplishment in `context/profile.md`.
+20. **Log the full JD.** Every Notion page body must contain the complete, unabridged JD text under `## Job Description`. Never summarise or truncate it.
+21. **LinkedIn connections check.** For every role scoring 45+, run `skills/linkedin-connections.md`.
+
+---
+
+## When Things Go Wrong
+
+| Problem | What to do |
+|---------|-----------|
+| Job URL is dead (404) | Mark Status = "Link 404" in Notion. Do not generate resume. |
+| Notion API fails | Save structured data to `working/notion_failed_{{DATE}}.json`. Alert user. |
+| PDF > 1 page | Shorten bullets, tighten Summary. Re-run script. Never adjust margins. |
+| Scanner returns 0 results | Check API keys in `claude-job-profile.json`. Run `python3 job_scanner.py --debug`. |
+| Gmail MCP not connected | Alert user. Skip sync. Do not error silently. |
+| Context getting long | Save all working files. Resume with: "Continue from working/shortlist_{{DATE}}.json" |
+
+---
+
+## Key Files
+
+- `context/profile.md` — candidate experience, metrics reference, skills (**private — gitignored**)
+- `context/preferences.md` — role archetypes, JD signals, geography, recently applied (**private — gitignored**)
+- `context/resume-format.md` — XYZ bullet rules, PDF spec, resume structure
+- `context/infrastructure.md` — Notion schema, storage rules, Gmail status mapping
+- `agents/INDEX.md` — all agent variable definitions
+- `scripts/query_approved.py` — Notion REST API query for /filling-in command
+- `claude-job-profile.json` — machine-readable profile for API/scanner use (**private — gitignored**)
+
+---
+
+## Application Process
+
+**Applications are always manual.** The pipeline stops after logging to Notion. You:
+1. Review the resume and cover letter in the Notion page
+2. Open the job URL
+3. Copy and paste resume + cover letter into the ATS form
+4. Submit
+5. Update Status = "Applied" and Date Applied in Notion yourself

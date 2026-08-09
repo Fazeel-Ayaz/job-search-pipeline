@@ -1,0 +1,252 @@
+# portals.yml — Target companies and geography for job_scanner.py
+# Each entry: company name, careers page URL, HQ country, relevant verticals
+# Scanner uses target_companies from ~/.claude-job-profile.json for filtering;
+# this file provides direct career page URLs for JD extraction in the /job-search skill.
+
+geography:
+  primary:
+    - ae    # UAE / Dubai
+    - gb    # United Kingdom
+    - de    # Germany
+    - nl    # Netherlands
+  secondary:
+    - be    # Belgium
+    - fr    # France
+    - se    # Sweden
+    - at    # Austria
+    - fi    # Finland
+    - ee    # Estonia
+
+# ── Target Companies ─────────────────────────────────────────────────
+# Grouped by vertical. careers_url points to the company's own job board.
+
+companies:
+
+  # ── Food Delivery / Marketplace ────────────────────────────────────
+  - name: Delivery Hero
+    careers_url: https://careers.deliveryhero.com/global/en/search-results
+    hq: Berlin, Germany
+    vertical: food delivery
+
+  - name: HelloFresh
+    careers_url: https://www.hellofresh.com/careers/search
+    hq: Berlin, Germany
+    vertical: food delivery
+
+  - name: Deliveroo
+    careers_url: https://careers.deliveroo.co.uk/
+    hq: London, UK
+    vertical: food delivery
+
+  - name: DoorDash
+    careers_url: https://careers.doordash.com/
+    hq: San Francisco, US
+    vertical: food delivery
+
+  - name: Wolt
+    careers_url: https://careers.wolt.com/en/jobs
+    hq: Helsinki, Finland
+    vertical: food delivery
+
+  - name: Glovo
+    careers_url: https://jobs.glovoapp.com/
+    hq: Barcelona, Spain
+    vertical: food delivery
+
+  - name: Just Eat Takeaway
+    careers_url: https://careers.justeattakeaway.com/global/en/search-results
+    hq: Amsterdam, Netherlands
+    vertical: food delivery
+
+  # ── Ride-hailing / Mobility ────────────────────────────────────────
+  - name: Uber
+    careers_url: https://www.uber.com/us/en/careers/list/
+    hq: San Francisco, US
+    vertical: mobility
+
+  - name: Bolt
+    careers_url: https://bolt.eu/en/careers/positions/
+    hq: Tallinn, Estonia
+    vertical: mobility
+
+  - name: Careem
+    careers_url: https://www.careem.com/en-ae/careers/
+    hq: Dubai, UAE
+    vertical: mobility
+
+  - name: inDrive
+    careers_url: https://indrive.com/en/careers/
+    hq: Mountain View, US
+    vertical: mobility
+
+  # ── Fintech ────────────────────────────────────────────────────────
+  - name: Revolut
+    careers_url: https://www.revolut.com/careers/
+    hq: London, UK
+    vertical: fintech
+
+  - name: Wise
+    careers_url: https://www.wise.jobs/search/
+    hq: London, UK
+    vertical: fintech
+
+  - name: Monzo
+    careers_url: https://monzo.com/careers/
+    hq: London, UK
+    vertical: fintech
+
+  - name: N26
+    careers_url: https://n26.com/en/careers/positions
+    hq: Berlin, Germany
+    vertical: fintech
+
+  - name: Klarna
+    careers_url: https://www.klarna.com/careers/jobs/
+    hq: Stockholm, Sweden
+    vertical: fintech
+
+  - name: Bunq
+    careers_url: https://www.bunq.com/careers
+    hq: Amsterdam, Netherlands
+    vertical: fintech
+
+  - name: Starling Bank
+    careers_url: https://www.starlingbank.com/careers/
+    hq: London, UK
+    vertical: fintech
+
+  - name: Remitly
+    careers_url: https://www.remitly.com/us/en/home/careers
+    hq: Seattle, US
+    vertical: fintech
+
+  - name: Nubank
+    careers_url: https://international.nubank.com.br/careers/
+    hq: Sao Paulo, Brazil
+    vertical: fintech
+
+  - name: Chime
+    careers_url: https://www.chime.com/careers/
+    hq: San Francisco, US
+    vertical: fintech
+
+  # ── E-commerce / Fashion ───────────────────────────────────────────
+  - name: Zalando
+    careers_url: https://jobs.zalando.com/en/jobs/
+    hq: Berlin, Germany
+    vertical: ecommerce
+
+  - name: ASOS
+    careers_url: https://www.asoscareers.com/
+    hq: London, UK
+    vertical: ecommerce
+
+  - name: Depop
+    careers_url: https://www.depop.com/jobs/
+    hq: London, UK
+    vertical: ecommerce
+
+  - name: Vestiaire Collective
+    careers_url: https://careers.vestiairecollective.com/
+    hq: Paris, France
+    vertical: ecommerce
+
+  - name: Vinted
+    careers_url: https://www.vinted.com/jobs
+    hq: Vilnius, Lithuania
+    vertical: ecommerce
+
+  # ── Music / Entertainment ──────────────────────────────────────────
+  - name: Spotify
+    careers_url: https://www.lifeatspotify.com/jobs
+    hq: Stockholm, Sweden
+    vertical: entertainment
+
+  - name: Deezer
+    careers_url: https://www.deezerjobs.com/
+    hq: Paris, France
+    vertical: entertainment
+
+  - name: Supercell
+    careers_url: https://supercell.com/en/careers/
+    hq: Helsinki, Finland
+    vertical: gaming
+
+  # ── Travel ─────────────────────────────────────────────────────────
+  - name: Booking.com
+    careers_url: https://careers.booking.com/
+    hq: Amsterdam, Netherlands
+    vertical: travel
+
+  - name: Skyscanner
+    careers_url: https://www.skyscanner.net/jobs/
+    hq: Edinburgh, UK
+    vertical: travel
+
+  - name: Expedia
+    careers_url: https://www.expediagroup.com/careers/
+    hq: Seattle, US
+    vertical: travel
+
+  - name: KAYAK
+    careers_url: https://www.kayak.com/careers
+    hq: Stamford, US
+    vertical: travel
+
+  # ── Consumer Tech / Apps ───────────────────────────────────────────
+  - name: Airbnb
+    careers_url: https://careers.airbnb.com/
+    hq: San Francisco, US
+    vertical: consumer tech
+
+  - name: Duolingo
+    careers_url: https://careers.duolingo.com/
+    hq: Pittsburgh, US
+    vertical: edtech
+
+  - name: Bumble
+    careers_url: https://bumble.com/en/careers
+    hq: Austin, US
+    vertical: consumer tech
+
+  - name: Headspace
+    careers_url: https://www.headspace.com/join-us
+    hq: Santa Monica, US
+    vertical: health
+
+  - name: Calm
+    careers_url: https://www.calm.com/careers
+    hq: San Francisco, US
+    vertical: health
+
+  - name: Neko Health
+    careers_url: https://www.nekohealth.com/careers
+    hq: Stockholm, Sweden
+    vertical: health
+
+  - name: simpleclub
+    careers_url: https://www.simpleclub.com/en/careers
+    hq: Munich, Germany
+    vertical: edtech
+
+  # ── Super-app / APAC (EU offices) ─────────────────────────────────
+  - name: Grab
+    careers_url: https://grab.careers/
+    hq: Singapore
+    vertical: super-app
+
+  - name: Gojek
+    careers_url: https://www.gojek.com/en-id/careers/
+    hq: Jakarta, Indonesia
+    vertical: super-app
+
+  # ── Other ──────────────────────────────────────────────────────────
+  - name: Fiskars
+    careers_url: https://careers.fiskarsgroup.com/
+    hq: Helsinki, Finland
+    vertical: consumer goods
+
+  - name: xAI
+    careers_url: https://x.ai/careers
+    hq: San Francisco, US
+    vertical: AI
