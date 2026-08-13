@@ -1,0 +1,36 @@
+# portals.template.yml — Target companies and geography for job_scanner.py
+#
+# Copy to portals.yml (gitignored) and fill in your own target companies and geography.
+# The scanner uses target_companies from claude-job-profile.json for filtering;
+# this file provides direct career page URLs for JD extraction in the /job-search skill.
+#
+# setup.sh creates portals.yml from this template on first run.
+
+geography:
+  primary:
+    # Add ISO country codes for your primary job markets
+    # Examples: ae (UAE), gb (UK), de (Germany), nl (Netherlands), us (USA)
+    - YOUR_PRIMARY_COUNTRY_1
+    - YOUR_PRIMARY_COUNTRY_2
+  secondary:
+    # Add secondary/target relocation markets here
+    - YOUR_SECONDARY_COUNTRY_1
+    - YOUR_SECONDARY_COUNTRY_2
+
+# ── Target Companies ─────────────────────────────────────────────────
+# Add companies you want to monitor directly (in addition to job board scanning).
+# Grouped by vertical. careers_url points to the company's own job board.
+
+companies:
+
+  # ── [Your vertical name] ──────────────────────────────────────────
+  # - name: Company Name
+  #   careers_url: https://careers.example.com/jobs
+  #   hq: City, Country
+  #   vertical: [vertical name]
+
+  # ── Template entries — replace with your own ─────────────────────
+  # - name: Example Corp
+  #   careers_url: https://careers.example.com
+  #   hq: City, Country
+  #   vertical: consumer tech

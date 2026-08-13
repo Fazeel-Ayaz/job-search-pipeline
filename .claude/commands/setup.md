@@ -159,6 +159,53 @@ After writing the file, say:
 >
 > Moving on to API keys now."
 
+
+### Step 2.4 — Generate persona-specific skills
+
+Using everything collected in Phases 2.1 and 2.2, generate three skill files that encode the user's specific target roles, tool background, scoring criteria, and geography. These files are gitignored — they live only on the user's machine.
+
+**a. Generate `skills/jd-filter.md`**
+
+Read `context/preferences.md`. Extract:
+- Target role signals: role titles, function keywords, methodologies, tools mentioned in target roles
+- Deal-breakers and excluded categories (from preferences deal-breakers section)
+- Ambiguous titles that need full JD verification before include/exclude
+- Geography/company exclusions
+
+Write `skills/jd-filter.md` with Include, Exclude, and Ambiguous sections populated. Use the structure from `skills/jd-filter.template.md`.
+
+**b. Generate `skills/archetypes.md`**
+
+Read `context/profile.md` and `context/preferences.md`. Based on the user's work history and target roles:
+- Identify 3–5 distinct hiring manager perspectives on this candidate's profile (archetypes)
+- For each archetype: name it, write the buyer persona, list JD detection signals (any 2+ triggers it), define the summary angle, list which profile.md tagged entries to lead with (by tag or P1/P2/P3 priority + category), list what to compress/omit, define bracket tags, assign an archetype code
+- Also specify which base resume template each archetype maps to (e.g. "use [template name] base")
+- Cover hybrid detection (most roles will match 2 archetypes)
+
+Write `skills/archetypes.md` using the full structure from `skills/archetypes.template.md`, replacing the placeholder comment with the actual archetype definitions.
+
+**c. Generate `skills/score-rubric.md`**
+
+Read `context/profile.md` and `context/preferences.md`. Populate:
+- **Dimension 1 (Industry, 20pts):** Primary target industries = 20; adjacent/related = 14; peripheral = 8; unrelated = 0. Derive from preferences.md target industries.
+- **Dimension 3 (Experience, 15pts):** Set "years in comparable roles" from profile.md total experience span in target function.
+- **Dimension 5 (Seniority, 15pts):** Current title from profile.md → target seniority from preferences.md → score scale accordingly.
+- **Dimension 6 (Location, 15pts):** Current location = 15; target geographies with visa situation from preferences.md → populate accordingly.
+- Dimensions 2 and 4 use the universal framework — copy from template unchanged.
+
+Write `skills/score-rubric.md` using the structure from `skills/score-rubric.template.md`, replacing all placeholder comments with real criteria.
+
+After writing all three files, say:
+
+> "Generated your three persona-specific skill files:
+> - `skills/jd-filter.md` — [N] include signals, [M] exclude categories
+> - `skills/archetypes.md` — [N] archetypes: [list codes]
+> - `skills/score-rubric.md` — industry scoring, experience threshold, seniority scale, and location scoring populated
+>
+> These are gitignored — they stay on your machine, never in the repo. Re-run Phase 2.4 whenever your target roles shift significantly."
+
+---
+
 ---
 
 ## PHASE 3 — API Keys

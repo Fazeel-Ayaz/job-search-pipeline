@@ -50,22 +50,21 @@ Read `skills/star-library.md` and index the available stories by theme so they c
 - "Are you open to relocation?" → the candidate: yes, currently in [FROM_PROFILE: personal.location], targeting [FROM_PROFILE: personal.relocation_targets]
 
 **Behavioural (hiring manager):**
-Map to STAR format. Generate 5-7 questions based on the JD's core competencies. For each question, first check the Behavioural tab for a pre-mapped story before writing a new one:
-- Cross-functional / alignment without authority → VFD story
-- Retention / churn → churn model story or reactivation efficiency story
-- Experimentation → holdout group / incentive contamination story
-- Lifecycle strategy → Braze campaigns story
-- Subscription growth → tPro or PandaPro story
-- Conflict / influencing up → incentive exclusion or cart abandonment story
-- Process / systems → Braze exclusion framework story
-- Mistake / recovery → cross-sell targeting contamination story
+Map to STAR format. Generate 5-7 questions based on the JD's core competencies. For each question, first check `skills/star-library.md` — use the question → story map there to find a pre-written answer before generating a new one. Common question themes:
+- Cross-functional / alignment without authority → check star-library.md
+- Retention / churn → check star-library.md
+- Experimentation / A/B testing → check star-library.md
+- Strategy or programme ownership → check star-library.md
+- Product launch / GTM → check star-library.md
+- Conflict / influencing up → check star-library.md
+- Mistake / recovery → check star-library.md
 
 **Technical / analytical:**
-- "How would you design an A/B test for [lifecycle touchpoint]?"
+- "How would you design an A/B test for [specific product touchpoint in this JD]?"
 - "How do you measure incrementality vs attribution?"
-- "Walk me through how you built your churn prediction model"
+- "Walk me through your most complex analytical or modelling project" (pull the best fit from star-library.md)
 - "What's your approach to cohort analysis?"
-- If company tab has analytical frameworks (e.g. GMV growth tree for Pandora), include those here
+- If the Notion page or star-library.md has a pre-built analytical framework for this company, include it here
 
 **Case study:**
 - "{{SPECIFIC_METRIC}} at {{COMPANY}} has dropped X%. What do you do?"
@@ -91,10 +90,10 @@ Use these four areas as the research base, then draft 3-4 sentences for the "Why
 
 ### Step 6 — Questions to ask the interviewer
 Generate 4-5 smart questions tailored to the role and company:
-- About the lifecycle stack / experimentation maturity
-- About the team's current focus (acquisition vs retention vs reactivation)
+- About the team's tooling / experimentation maturity
+- About the team's current focus (read from the JD's emphasis — e.g. growth vs retention vs efficiency)
 - About success metrics for the role in the first 6 months
-- One question showing the candidate has thought about their specific product challenge
+- One question showing the candidate has thought about a specific product or business challenge visible in the JD or recent company news
 
 ### Step 7 — Save to file
 Save prep sheet to `working/interview_prep_{{COMPANY}}_{{DATE}}.md`.

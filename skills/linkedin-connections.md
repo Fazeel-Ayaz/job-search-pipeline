@@ -16,7 +16,7 @@ If no matching directory exists: skip this skill entirely. Do not note it in Not
 
 ## Step 2 — Quick CSV lookup
 
-Read `Connections.csv` only. For each row, check if the company name column contains the target company name (case-insensitive substring match). Also check the parent company if relevant (e.g. "Delivery Hero" for Talabat/foodpanda, "Uber" for Careem, "DoorDash" for Wolt).
+Read `Connections.csv` only. For each row, check if the company name column contains the target company name (case-insensitive substring match). Also check the parent company if relevant — e.g. if the role is at a subsidiary, search both the subsidiary name and the owning group name.
 
 **If no rows match: stop here. Log nothing. Move on.**
 

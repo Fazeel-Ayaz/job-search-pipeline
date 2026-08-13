@@ -27,8 +27,8 @@ Create a new row in the Job Application Tracker database and populate the corres
 | `{{MATCH_RATIONALE}}` | 2-3 sentence explanation of why this role qualifies |
 | `{{RED_FLAGS}}` | Any flags noted (language requirement, visa risk, etc.) |
 | `{{DATE}}` | Current date YYYY-MM-DD |
-| `{{ARCHETYPE_PRIMARY}}` | Primary archetype code from Resume Tailor (e.g. GROWTH-LIFECYCLE) |
-| `{{ARCHETYPE_SECONDARY}}` | Secondary archetype code (e.g. LIFECYCLE-EXP) |
+| `{{ARCHETYPE_PRIMARY}}` | Primary archetype code from Resume Tailor (as defined in skills/archetypes.md) |
+| `{{ARCHETYPE_SECONDARY}}` | Secondary archetype code (as defined in skills/archetypes.md) |
 | `{{ARCHETYPE_FRAMING}}` | One-sentence framing summary from archetype detection |
 | `{{COMP_RANGE}}` | Market salary range from Comp Research skill |
 | `{{COMP_ANCHOR}}` | Negotiation anchor (P60-75) |

@@ -37,7 +37,7 @@ Read the job listing and company website before writing. Calibrate tone accordin
 |---|---|---|
 | Startup / tech | Conversational, direct | "I've spent the last 3 years building exactly this kind of thing" |
 | Corporate / enterprise | Professional, measured | "My experience in X aligns closely with your stated objectives" |
-| Consumer tech / marketplace | Energetic, data-grounded | "At Talabat, I owned this exact problem across 8 markets" |
+| Consumer tech / marketplace | Energetic, data-grounded | "At [Company], I owned this exact problem across [scope]" |
 | Government / public sector | Formal, criteria-driven | "I address each of the key selection criteria below" |
 | Creative agency | Personality forward | "Your work on X is what made me pay attention" |
 | Non-profit | Mission-aligned | "I've followed your work in X and share your commitment to Y" |
@@ -78,7 +78,7 @@ Read the job listing and company website before writing. Calibrate tone accordin
 
 **Underqualified:** Focus on adjacent experience and learning velocity. Acknowledge the stretch honestly and show you've closed similar gaps before.
 
-**Multiple Talabat roles:** Reference Talabat once with clear progression context — "I've been at Talabat since 2023, progressing from Lifecycle Marketing Specialist to User Growth Sr. Specialist across New Verticals and Membership."
+**Multiple roles at the same company:** Reference the company once with a clear progression note — "I've been at [Company] since [year], progressing from [earlier title] to [current title] across [scope/verticals]."
 
 ---
 
@@ -100,18 +100,18 @@ One real detail beats ten generic sentences.
 **Too generic:**
 > Dear Hiring Manager, I am writing to express my interest in the Marketing Manager position. I have 5 years of marketing experience and am a strong communicator with excellent organisational skills. I believe I would be a great addition to your team.
 
-**Right approach (the candidate, food delivery → fintech context):**
+**Right approach (structure to follow):**
 > Hi [Name],
 >
-> Your job listing mentioned you are rebuilding the customer lifecycle function from scratch — that is exactly the kind of challenge I've been solving at Talabat, where I built the lifecycle and CRM infrastructure for the Grocery and Retail verticals across 8 MENA markets and grew GOV per user by 7% in the first year.
+> Your job listing mentioned [specific challenge from the JD] — that is exactly the kind of problem I've been solving at [current company], where I [one-sentence summary of most relevant work: what you owned, what you achieved, scope].
 >
-> Two things in the listing stood out: the focus on subscription retention and the need to connect CRM activity to commercial targets. At Talabat, I own both: a tPro freemium-to-premium program that drove +5pp conversion, and a churn prediction model that reduced churn 7% and improved incremental revenue 11%. I also built the Vendor Funded Deals GTM that delivered EUR 75,000 in Q1 2026 — working directly with commercial and finance partners to build the business case.
+> Two things in the listing stood out: [JD requirement 1] and [JD requirement 2]. At [company], I own both: [proof point 1 with metric] and [proof point 2 with metric]. Draw all numbers from `context/profile.md` Resume Metrics Reference — never invent.
 >
-> I've been following [Company]'s approach to [specific product/initiative] since [timeframe]. The problem you're solving — [specific challenge from research] — is one I find genuinely interesting because [honest, specific reason]. It's the kind of work that sits at the intersection of customer data and commercial strategy, which is where I do my best work.
+> I've been following [Company]'s approach to [specific product/initiative — from pre-write research]. The problem you're solving — [specific challenge] — is one I find genuinely interesting because [honest, specific reason]. It's the kind of work that sits at the intersection of [X] and [Y], which is where I do my best work.
 >
-> I'd welcome the chance to discuss how my experience in lifecycle and growth could support your team's work on retention and CLV. Happy to chat whenever suits.
+> I'd welcome the chance to discuss how my experience in [relevant function] could support your team's work on [JD priority]. Happy to chat whenever suits.
 >
-> Best regards, {{YOUR_FULL_NAME}}
+> Best regards, [Name from context/profile.md]
 
 ---
 

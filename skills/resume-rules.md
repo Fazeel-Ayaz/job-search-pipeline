@@ -20,8 +20,8 @@ The archetype system overrides the binary base template selection below. Use the
 ## Content Rules
 
 1. **No em dashes.** Never use `—` anywhere. Use `:`, `;`, or a comma instead.
-2. **Talabat = Delivery Hero.** Always write "Talabat (Delivery Hero)". Never "DoorDash Group". Never "Delivery Hero Group". Never just "Talabat". Note: Wolt is part of DoorDash, not Delivery Hero — never conflate them.
-3. **Stats from profile only.** Use only metrics from the Candidate Profile in CLAUDE.md. Never fabricate, estimate, or round up numbers.
+2. **Verify parent company names.** Before writing any company reference, confirm the exact owning group. Never guess or reuse a group name from a different employer. Always use the legally correct name.
+3. **Stats from profile only.** Use only metrics from `context/profile.md` Resume Metrics Reference. Never fabricate, estimate, or round up numbers.
 4. **Exactly 1 page.** Verify with pypdf before considering the resume complete. If > 1 page, cut content — never adjust margins or font size below spec.
 
 ---
@@ -76,21 +76,21 @@ The critical rule: **lead with the result, not the action.** The outcome (X) com
 **Rules:**
 1. **Lead with the outcome verb.** Never start with "By doing X…", "Responsible for…", "Worked on…", "Helped with…"
 2. **Past tense for prior roles, present tense for current role.** Never mix within a role block.
-3. **Every bullet must have a number.** If no hard metric exists: quantify scope (8 markets, 4 verticals, 2M users, 40 events, 100+ properties, EUR 75k).
+3. **Every bullet must have a number.** If no hard metric exists: quantify scope (N markets, N verticals, N users, N events, N properties, $Xk budget).
 4. **Never repeat action verbs within the same role block.** Rotate: Reduced, Drove, Built, Designed, Led, Launched, Scaled, Deployed, Orchestrated, Re-engineered, Integrated, Improved, Increased, Co-developed, Analysed, Forecasted, Partnered, Owned.
 5. **Inject JD keywords naturally into the Z clause** — never bolted on at the end as a list. If the JD says "always-on triggered programmes", write "by building always-on triggered programmes via Braze" not "managed CRM (always-on, triggered, Braze)".
 6. **No hedging.** Cut "helped", "supported", "contributed to", "assisted with", "up to X%". Own the number or own the floor.
 7. **No prose intros inside bullets.** Context belongs in the italic tagline under the role title — bullets carry only proof.
 
-**Good vs bad examples (the candidate's actual bullets):**
+**Good vs bad examples:**
 
 | ❌ Weak / incomplete | ✅ XYZ — outcome first, all three parts |
 |---|---|
-| "Worked on CRM campaigns across email and push" | "Drove **7% GMV uplift per user** and **3% CVR uplift** across 8 MENA markets by building always-on triggered lifecycle programmes via Braze (Email, Push, In-App, SMS)" |
-| "Helped reduce churn through behavioural targeting" | "Reduced churn by **7%** and grew incremental GMV by **11%** by building a behavioural churn prediction model to identify at-risk cohorts and deploy precision-timed win-back programmes" |
-| "Contributed to tPro membership growth" | "Increased freemium-to-premium conversion by **+5pp** for tPro by designing cross-sell lifecycle campaigns into the Grocery ordering journey" |
-| "Ran A/B tests to improve cost efficiency up to 20%" | "Improved cost per incremental GMV by **20%** by designing a holdout-group experimentation framework for incentive architecture — reducing contamination 4x vs prior approach" |
-| "Liaised with data team on experimentation frameworks" | "Increased reactivation efficiency by **24%** by building a behavioural prediction model targeting lapsed-user cohorts with precision-timed incentive offers" |
+| "Worked on CRM campaigns across email and push" | "Drove **[X]% GMV uplift per user** and **[Y]% CVR uplift** across [N] markets by building always-on triggered lifecycle programmes via [tool] (Email, Push, In-App, SMS)" |
+| "Helped reduce churn through behavioural targeting" | "Reduced churn by **[X]%** and grew incremental revenue by **[Y]%** by building a behavioural churn prediction model to identify at-risk cohorts and deploy precision-timed win-back campaigns" |
+| "Contributed to [product] growth" | "Increased freemium-to-premium conversion by **[X]pp** for [product] by designing cross-sell lifecycle campaigns timed to peak engagement moments" |
+| "Ran A/B tests to improve cost efficiency" | "Improved cost per incremental [metric] by **[X]%** by designing a holdout-group experimentation framework — reducing audience contamination [N]x vs prior approach" |
+| "Liaised with data team on experimentation frameworks" | "Increased [outcome] efficiency by **[X]%** by building a behavioural prediction model targeting lapsed-user cohorts with precision-timed incentive offers" |
 
 **Bracket tags:**
 Wrap each bullet's category in `[Bold Bracket Tags]` to group by theme. Tags must match JD language where possible:
@@ -104,7 +104,7 @@ Use standard, unambiguous headings in this exact order:
 
 1. **Name** — large bold, top center-left
 2. **Contact line** — [FROM_PROFILE: personal.location] | {{YOUR_PHONE}} | {{YOUR_EMAIL}} | {{YOUR_LINKEDIN_URL}} | {{YOUR_GITHUB_URL}}
-3. **Summary** — 2–3 lines, tailored to the role. Must contain the top 2-3 JD keywords in the first sentence. Use AARRR/lifecycle/CRM language from the JD. No generic openers ("results-driven marketer").
+3. **Summary** — 2–3 lines, tailored to the role. Must contain the top 2-3 JD keywords in the first sentence. Mirror the JD's own language and framing — no generic openers ("results-driven marketer", "passionate professional").
 4. **Professional Experience** — reverse chronological
    - Company | Role Title (bold) + date right-aligned
    - Italic tagline/context line under the title (carries role context so bullets carry only proof)
@@ -118,11 +118,7 @@ Use standard, unambiguous headings in this exact order:
 ---
 
 ## Base Template Selection
-The archetype (Step 0 above) governs what leads and how experience is framed. Base template controls layout only:
-- Archetype `CRM-STRAT` or `LOYALTY-PROG` → **Lifecycle** base
-- Archetype `LIFECYCLE-EXP` or `GROWTH-LIFECYCLE` → **Growth/Retention** base
-- Hybrid (equal primary/secondary split) → use the primary archetype's mapping
-- When in doubt → Growth/Retention
+The archetype (Step 0 above) governs what leads and how experience is framed. Base template controls layout only. See `skills/archetypes.md` — each archetype definition specifies which base template it maps to. When in doubt, use whichever template best reflects the primary archetype's framing.
 
 ---
 
@@ -143,7 +139,7 @@ Every resume generation script must also produce a cover letter PDF in the same 
 - [ ] Summary angle matches primary archetype
 - [ ] Lead bullets match primary archetype's "lead experience" list
 - [ ] No `—` anywhere
-- [ ] "Talabat (Delivery Hero)" — correct
+- [ ] Parent company names verified (not guessed)
 - [ ] Single-column layout, no tables or graphics
 - [ ] Standard section headings only
 - [ ] Every bullet starts with a capital action verb

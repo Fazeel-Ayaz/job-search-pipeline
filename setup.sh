@@ -44,7 +44,34 @@ else
   echo "  → Fill in your target roles, geography, and deal-breakers"
 fi
 
-# 4. Create working directories
+# 4. Copy persona-specific skill templates (populated by /setup Phase 2.4)
+for skill in archetypes jd-filter score-rubric; do
+  if [ -f "skills/${skill}.md" ]; then
+    echo "✓ skills/${skill}.md already exists. Skipping."
+  else
+    cp "skills/${skill}.template.md" "skills/${skill}.md"
+    echo "✓ Created skills/${skill}.md from template"
+    echo "  → Run /setup Phase 2.4 to populate with your target roles and background"
+  fi
+done
+
+if [ -f "skills/star-library.md" ]; then
+  echo "✓ skills/star-library.md already exists. Skipping."
+else
+  cp "skills/star-library.template.md" "skills/star-library.md"
+  echo "✓ Created skills/star-library.md from template"
+  echo "  → STAR stories build up over time as you run /interview-prep sessions"
+fi
+
+if [ -f "portals.yml" ]; then
+  echo "✓ portals.yml already exists. Skipping."
+else
+  cp "portals.template.yml" "portals.yml"
+  echo "✓ Created portals.yml from template"
+  echo "  → Add your target companies and geography to portals.yml"
+fi
+
+# 6. Create working directories
 mkdir -p working
 echo "✓ working/ folder ready (gitignored — safe for intermediate outputs)"
 
@@ -54,12 +81,12 @@ echo "✓ scripts/ folder ready"
 mkdir -p resumes
 echo "✓ resumes/ folder ready (gitignored — temp PDFs go here)"
 
-# 5. Activate pre-commit hook (blocks personal data from git commits)
+# 7. Activate pre-commit hook (blocks personal data from git commits)
 git config core.hooksPath .githooks
 chmod +x .githooks/pre-commit 2>/dev/null || true
 echo "✓ Pre-commit hook activated — personal data will be blocked from commits"
 
-# 6. Check Claude Code is installed
+# 8. Check Claude Code is installed
 if command -v claude &> /dev/null; then
   echo "✓ Claude Code is installed ($(claude --version))"
 else

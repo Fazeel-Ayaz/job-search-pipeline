@@ -212,8 +212,8 @@ This is the most important section to get right. Add a table row for every `[A1]
 ```markdown
 | Tag | Metric | Context |
 |-----|--------|---------|
-| [A1] | +5pp freemium-to-premium conversion | Grocery cross-sell lifecycle campaigns, Q2 2024 |
-| [A2] | 20% CPA reduction | Incentive sequencing A/B test, 3-month run |
+| [A1] | +Xpp [metric] conversion | [Brief description of the initiative, quarter/year] |
+| [A2] | Y% [metric] improvement | [Brief description of what drove it] |
 ```
 
 **Rule:** if the number isn't confirmed and verified, don't add it. The pipeline never fabricates metrics — it only uses what's in this table.
@@ -238,9 +238,9 @@ Open `context/preferences.md`. Key sections to fill in:
 
 ## Part 7: Add Your Resume Files
 
-Place your base resume PDFs in the project root:
-- Your primary resume (CRM/lifecycle-focused version) — e.g. `Your-Name-Lifecycle-Marketing.pdf`
-- Your secondary resume (growth/experimentation-focused version) — e.g. `Your-Name-Growth-Retention.pdf`
+Place your base resume PDFs in the project root. You'll want at least one base resume, ideally two that emphasise different framings (e.g. strategy-led vs execution-led, or function A vs function B). Name them clearly:
+- `Your-Name-[Primary-Framing].pdf`
+- `Your-Name-[Secondary-Framing].pdf`
 
 Then open `context/resume-format.md` and update the "Which Base Resume to Use" section to reference your actual filenames.
 

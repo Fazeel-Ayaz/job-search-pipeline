@@ -31,16 +31,7 @@ If the candidates file was produced by Job Discovery and these checks have not y
 Read `{{CANDIDATES_FILE}}`. For each candidate, load the full JD (from `full_jd` field or fetch via JD Reader agent if missing).
 
 ### Step 2 — Apply Score Rubric skill
-Apply **Score Rubric skill** (`skills/score-rubric.md`) to each candidate. Score across all 6 dimensions:
-
-| Dimension | Max | Scoring notes |
-|-----------|-----|--------------|
-| Industry / vertical match | 20 | Consumer tech, marketplace, food delivery, fintech = 20; adjacent (e-commerce, healthtech) = 12; unrelated = 0 |
-| JD lifecycle/CRM signal density | 20 | 5+ signals from include list = 20; 3-4 = 14; 1-2 = 7; 0 = 0 |
-| Required experience met | 15 | Years required ≤ the candidate's years in comparable role = 15; 1yr gap = 10; 2yr gap = 5 |
-| JD keywords present in profile | 15 | >80% keyword overlap = 15; 60–80% = 10; 40–60% = 6; <40% = 0 |
-| Seniority signals match | 15 | "Senior Specialist", "Manager", "Lead" = 15; "Specialist" = 12; "Associate" = 5; "Director"/"Head" = 8 |
-| Location / visa sponsorship | 15 | UAE = 15; EU with visa sponsorship confirmed or likely = 15; EU with no mention = 10; no relocation = 0 |
+Apply **Score Rubric skill** (`skills/score-rubric.md`) to each candidate. That file contains the full scoring criteria for all 6 dimensions — read it before scoring any candidate. Do not use cached dimension criteria from memory.
 
 ### Step 3 — Log scores
 For each candidate, record:

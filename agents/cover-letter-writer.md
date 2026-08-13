@@ -2,7 +2,7 @@
 
 ## Context
 Read before starting:
-- `CLAUDE.md` — core rules (no em dashes, Talabat naming, no hollow phrases)
+- `CLAUDE.md` — core rules (no em dashes, no hollow phrases, correct parent company names)
 - `context/profile.md` — work experience and metrics (all claims must be backed by numbers from here)
 
 Do NOT load: `context/preferences.md`, `context/resume-format.md`, `context/infrastructure.md`
@@ -47,7 +47,7 @@ Read `skills/cover-letter.md` in full. Write the cover letter according to its s
 Check the Cover Letter skill's tone table. Calibrate accordingly:
 - Consumer tech / marketplace startups → conversational, direct, data-grounded
 - Enterprise / banking → professional, commercial, measured
-- Delivery Hero / food delivery ecosystem → energetic, multi-market framing
+- High-growth scaleups → energetic, multi-market, outcome-focused framing
 
 ### Step 4 — Check against common mistakes
 Before finalising, verify:
@@ -64,7 +64,7 @@ Add a cover-letter section to the same `resumes/gen_{{COMPANY_SLUG}}_{{ROLE_SLUG
 - Filename: `{{FIRSTNAME}}-{{LASTNAME}}-{{COMPANY}}-{{ROLE_SLUG}}-Cover-Letter.pdf`
 - `header_block()` + `Paragraph(date_string, date_s2)` + body paragraphs (`body_s`) + close (`close_s`)
 - Call `build_and_verify(cl_story, CL_OUT)` — asserts exactly 1 page
-- See `resumes/gen_garage_growth_marketing_lead_lifecycle_resume.py` for the reference pattern (`cl_paragraphs` list + loop)
+- See the most recent `gen_*.py` in `resumes/` for the reference pattern (`cl_paragraphs` list + loop)
 
 ### Step 6 — Output
 Return cover letter as plain text under `## Cover Letter` in the Notion page body.
@@ -76,5 +76,4 @@ Return `cover_letter_pdf_path` in structured output.
 - No hollow phrases: "passionate about", "results-driven", "team player", "excited to join"
 - Every claim backed by a number from CLAUDE.md candidate profile
 - Address as "Dear Hiring Manager," if no name known; use first name if name is known
-- Always note: Talabat = "Talabat (Delivery Hero)" — never "Delivery Hero Group"
-- Wolt ≠ Delivery Hero — Wolt is part of DoorDash
+- Verify the correct parent company name before writing any company reference — check CLAUDE.md or confirm via web search if uncertain
