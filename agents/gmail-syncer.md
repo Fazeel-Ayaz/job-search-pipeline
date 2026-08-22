@@ -62,9 +62,9 @@ Print a summary:
 ```
 Gmail Sync — {{DATE}}
 ─────────────────────────────
-✓ Confirmation Received:  Wolt (email 2026-06-01)
-✓ Interview Scheduled:    Delivery Hero (email 2026-06-02, Tue June 8 at 3pm CET)
-→ No update:              Revolut, Bolt, simpleclub (no new emails)
+✓ Confirmation Received:  Acme Corp (email {{DATE}})
+✓ Interview Scheduled:    Example Inc (email {{DATE}}, {{DAY}} at {{TIME}})
+→ No update:              Company A, Company B (no new emails)
 ─────────────────────────────
 3 roles checked. 2 status updates applied.
 ```

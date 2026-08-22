@@ -184,9 +184,9 @@ If an older index exists, archive it:
   "recruiter_messages": 3,
   "profile_discrepancies": [],
   "top_target_company_connections": {
-    "Uber": 4,
-    "Delivery Hero": 12,
-    "Spotify": 2
+    "Acme Corp": 4,
+    "Example Inc": 3,
+    "Another Co": 2
   }
 }
 ```

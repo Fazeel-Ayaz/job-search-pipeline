@@ -69,8 +69,8 @@ Keep only roles with `score >= 60`. Sort descending by score. Cap at 15 roles.
 Save ranked shortlist to `working/shortlist_{{DATE}}.json`. Print a summary table to console:
 ```
 Rank | Score | Company          | Title                              | Location
-1    | 87    | Wolt             | Global Lifecycle Mktg Mgr          | Helsinki
-2    | 82    | Delivery Hero    | Growth Marketing Manager           | Berlin
+1    | 87    | Acme Corp        | Growth Marketing Manager           | Berlin
+2    | 82    | Example Inc      | Lifecycle Marketing Lead           | Amsterdam
 ...
 ```
 
