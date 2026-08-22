@@ -35,6 +35,10 @@ resumes/
 # Scan history (dedup state — regenerated on each run)
 scanned_history.json
 
+# Per-run Notion scripts — contain hardcoded page IDs and personal data
+scripts/notion_log_*.py
+scripts/notion_update_*.py
+
 # Working files — intermediate outputs, never commit
 working/
 

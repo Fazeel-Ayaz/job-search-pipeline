@@ -63,6 +63,9 @@ ADZUNA_COUNTRIES = {
     "ee": "Estonia",
     "lt": "Lithuania",
     "lu": "Luxembourg",
+    "us": "United States",
+    "au": "Australia",
+    "sg": "Singapore",
     # "ae" removed — Adzuna returns 404 for all UAE queries
 }
 
